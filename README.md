@@ -6,7 +6,7 @@ This is just a program I made to make sure my pizza doesn't burn (and to learn S
 make
 
 # Usage
-./main <topic> <time> (seconds)
+./main {topic} {time} (seconds)
 (or copy the executable to /usr/bin for convenience)
 
 # TODO
