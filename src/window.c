@@ -70,7 +70,7 @@ void init_window(const char* restrict content, const int time){
 		die("Failed to initialize SDL");
 	}
 		
-	usleep(time * 60 * 1000000ULL);
+//	usleep(time * 60 * 1000000ULL);
 	play_async();
 
 	// @param title(str)
@@ -106,6 +106,7 @@ void init_window(const char* restrict content, const int time){
 	
 	SDL_Texture* texture = SDL_CreateTextureFromSurface(
 			renderer, surface);
+	SDL_FreeSurface(surface);
 	if(!texture){
 		die("Couldn't create texture");
 	}
