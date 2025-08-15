@@ -33,20 +33,20 @@ void die(const char* restrict err){
 }
 
 void font_cleanup(TTF_Font* font, 
-		SDL_Texture* texture, SDL_Surface* surface){
+		SDL_Texture* texture){
 	
-	TTF_CloseFont(font);
-	SDL_FreeSurface(surface);
 	SDL_DestroyTexture(texture);
+	TTF_CloseFont(font);
 	TTF_Quit();
 }
 
-void window_cleanup(SDL_Window* window){
+void window_cleanup(SDL_Window* window, SDL_Renderer* renderer){
+	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
 	SDL_Quit();
 }
 
-void poll_events(SDL_Window* window){
+void poll_events(){
 
 	SDL_Event e;
 	bool running = true;
@@ -54,11 +54,11 @@ void poll_events(SDL_Window* window){
 		while(SDL_PollEvent(&e)){
 			if(e.type == SDL_QUIT ||
 			   e.type == SDL_MOUSEBUTTONDOWN){
-				window_cleanup(window);
 				running = false;
 			}
 		}
 	}
+	return;
 }
 
 void init_window(const char* restrict content, const int time){
@@ -106,7 +106,6 @@ void init_window(const char* restrict content, const int time){
 	
 	SDL_Texture* texture = SDL_CreateTextureFromSurface(
 			renderer, surface);
-	SDL_FreeSurface(surface);
 	if(!texture){
 		die("Couldn't create texture");
 	}
@@ -119,6 +118,6 @@ void init_window(const char* restrict content, const int time){
 	/* End font initialization */
 
 	poll_events(window);
-	font_cleanup(font, texture, surface); 
-	window_cleanup(window);
+	font_cleanup(font, texture);
+	window_cleanup(window, renderer);
 }
