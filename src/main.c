@@ -21,7 +21,7 @@ int main(int argc, char** argv){
 
 	char* title = argv[1];
 	char* end;
-	int time = strtol(argv[2], &end, 10);
+	float time = strtof(argv[2], &end);
 	if(*end != '\0'){
 		printf("Invalid time\n");
 		exit(0);
