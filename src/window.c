@@ -70,7 +70,7 @@ void init_window(const char* restrict content, const int time){
 		die("Failed to initialize SDL");
 	}
 		
-//	usleep(time * 60 * 1000000ULL);
+	usleep(time * 60 * 1000000ULL);
 	play_async();
 
 	// @param title(str)
