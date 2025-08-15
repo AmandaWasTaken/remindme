@@ -22,7 +22,7 @@ typedef struct {
 Window_ctx ctx = {
 	.w 	  = 800,
 	.h 	  = 600,
-	.lifetime = 10000, // 10 seconds
+	.lifetime = 10000, // 10 seconds // possibly redundant now
 };
 
 void die(const char* restrict err){
@@ -70,7 +70,6 @@ void init_window(const char* restrict content, const int time){
 		die("Failed to initialize SDL");
 	}
 		
-	//with usleep we can do stuff like 0.5 for half a minute 
 	usleep(time * 60 * 1000000ULL);
 	play_async();
 
