@@ -1,9 +1,4 @@
-#ifdef _WIN32
-#include <SDL/SDL.h>
-#else
 #include <SDL2/SDL.h>
-#endif
-
 #include <pthread.h>
 
 void audio_cleanup(SDL_AudioDeviceID id, Uint8* buf){

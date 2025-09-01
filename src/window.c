@@ -4,11 +4,7 @@
 #include <errno.h>
 #include "playsound.h"
 
-#ifdef _WIN32
-#include <SDL/SDL.h>
-#else
 #include <SDL2/SDL.h>
-#endif
 #include <SDL2/SDL_ttf.h>
 
 typedef struct {
@@ -84,6 +80,7 @@ void init_window(const char* restrict content, const int time){
 		die("Failed to initialize SDL");
 	}
 		
+	// We use usleep instead of sleep() to support decimal times eg. 10.5 minutes
 	usleep(time * 60 * 1000000ULL);
 	play_async();
 

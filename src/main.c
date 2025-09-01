@@ -5,7 +5,7 @@
 #include "window.h"
 
 void usage(void){
-	puts("Usage: <topic> <time> (seconds)");
+	puts("Usage: <topic> <time> (minutes)");
 	exit(0);
 }
 
